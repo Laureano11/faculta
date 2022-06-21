@@ -1,0 +1,68 @@
+int main { // PIE IZQUIERDO
+    if(paredEnFrente()){
+        wait(T_FRENO)
+        frenar()
+        signal(T_FRENO)
+        }
+    wait(t_inicio)    
+    pisar_embrague()
+    signal(t_embr)
+
+    wait(t_volante)
+    soltar_embrague()
+    signal(t_solt_embr)
+}
+int main { // PIE DERECHO                // t_embr =                
+    if(paredEnFrente()){                 //t_cambio=0
+        wait(T_FRENO)                    //t_anteojos=1
+        frenar()                         //T_FRENO=1
+        signal(T_FRENO)                  //t_solt_embr=0
+        }                                //t_volante=0 
+    wait(t_solt_embr)                    //t_inicio=1
+    pisar_acelerador()
+    signal(t_inicio)
+}
+int main { // MANO DERECHA
+    wait(t_embr)
+    poner_cambio()
+    signal(t_cambio)
+    
+    wait(t_anteojos)
+    acomodar_anteojos()
+    signal(t_anteojos)
+    agarrar_volante()
+}
+int main { // MANO IZQUIERDA  
+    wait(t_anteojos)
+    acomodar_anteojos()
+    signal(t_anteojos)
+
+    wait(t_cambio)
+    agarrar_volante()
+    signal(t_volante)
+
+}
+/*
+PARCIAL 2019
+
+1) Una syscall es una llamada al sistema directa de parte del codigo, esta misma puede ser bloqueante o no bloqueante, es decir, puede
+derivar en el bloqueo del proceso/hilo que la este mandando o no.
+En cambio un wrapper es una funcion provista por las bibliotecas, que transforma esta syscall para que sea
+no bloqueante, se utilizan estas funciiones de la biblioteca en lugar de la syscall directamente en el codigo
+esto lo que nos permite enviar syscalls con la garantia que no se bloquee el proceso, esta se suele utilizar en los procesos ults
+cuando queremos hacer syscalls para que al hacerla no derive esto en el bloqueo de todos los hilos hermanos del hilo que la mando.
+y la otra usarla cuando quisieramios realizar la operacion si o si.
+
+
+
+2) la difrenecia entre las tecnicas de prevencion y deteccion de deadlock rige en su objetivo principal,
+mientras que uno te garantiza que NUNCA ocurrira un deadlock (ya que se ocupa de que no ocurra una de las 4 condiciones necesarias)
+mientras que el otro se enfoca en correr un algoritmo cada cierto tiempo para verificar si existe un deadlock
+en el sistema y si es asi tomar las acciones necesarias para deshacerlo. 
+El sistema de prevencion seria mas util usarlo en un sistema critico
+mientras que el de deteccion en un sistema que desamos que sea mas performante.
+
+*/
+
+
+
