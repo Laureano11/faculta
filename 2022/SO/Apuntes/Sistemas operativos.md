@@ -1114,3 +1114,208 @@ herramientos de tipo "semaforo" provistas por el SO para operar sobre archivos.
 
 * Acceso total
 * Acceso restringido: 
+
+```
+Permisos
+-Propietario: RWX (read write execute)
+- Grupo: RW-
+- Resto: R--
+```
+
+### Sistema de archivos
+* Disco logico:
+![](2022-06-29-17-07-22.png)
+
+`Si escribo  un registro de 8KB => Estoy esciribendo 2 bloques de 4KB => 16 sectores de 512bytes`
+
+* En que consiste formatearlo? basicamente darle un formato (_FAT32, NTFS, EXT2, etc_)
+- Escribir la informacion necesaria en una particion para poder operar con archivos en base
+a una especificacion determinada 
+
+### Estructuras de un file system
+
+1. Bloque de arranque o Booteo (MBR): Tabla de particiones
+1. Bloque de control de volumen: La informacion sobre las particiones
+1. Meta informacion: atributos, nombres, etc
+1. Informacion: los archivos en si
+
+* FBC: File control block
+
+* Tabla de montaje
+
+* Estructura de directorios
+* Tabla/lista global de archivos abiertos
+* Tabla/lista de archivos abiertos por proceso.
+
+
+* Directorios: es un tipo de archivo, indices de nombres.
+![](2022-06-29-18-10-52.png)
+
+- Inode: Information NODE es el ID del archivo. 
+
+### Metodos de asignacion
+* EL filesystem lo que va a hacer es asignarle bloques a un archivo, asi es como se le asgina sue espacio.
+
+* Para poder abrir un archivo se para en un directorio y con el ID, recorre ese directorio hasta encontrar el archivo (o sea el FCB). Esta estructura sirve para controlar el archivo, la levanto a memoria y desde ahi tengo puntero a los datos.  `Es decir: punteros a los blockes asignados a lso archivos`
+
+* Todos los esquemas sufren de fragmentacion interna, porque los bloques son fijos y a todos los archivos se le asignan N cantidad de bloques
+![](2022-06-29-18-58-00.png)
+#### Mecanismo contiguo
+
+* Se indica el bloque inicial y la cantidad de bloques
+`Ejemplo: Main.c | Bloque inicial: 2 | Cant bloques:5 `
+- El archivo Main.C tendria asignado los bloques : 2,3,4,5,6.
+
+* Ocupa poco espacio en disco
+* Sufre de fragmentacion externa
+* Si se corrompe un sector del archivo, se pueden leer los otros.
+
+#### Mecanismo enlazado
+* Se elige cualquier bloque pero cada bloque apunta al bloque siguiente asigando
+`Archivo Main.c| Bloque inicial: 3 | Bloque final: 1`
+- Se lee el primer bloque y desde ahi se van averiguando los otros
+
+* En caso de que se corrompa uno de los bloques, no podes seguir reconstruyendo el archivo, ya que este bloque contiene el puntero al proximo y perderias la informacion.
+#### Mecanismo indexado
+* En el FCB se tiene un puntero por cada bloque del archivo
+
+`Ejemplo: Main.c |3|5|6|4|`
+* estan en orden, el primer bloque seria el 3, el 2do el 5 y asi ...
+
+* Si se corrompe un sector del archivo, se pueden leer los otros.
+
+### Gestion de espacio libre
+
+* Listas de bloques libres
+    - listas de porciones libres
+
+* Bitmap = [10100100010101010] (libre/ocupado) 1 ocupado 0 libre
+
+* indexada `FREE|32|43|54|63|12`
+
+* Agrupamiento en bloques
+
+### Ejemplo de escritura de un archivo nuevo
+1. Crea archivo
+    - Verificar que exista FCB disponibe
+    - Crear entrada de directorio
+
+![](2022-06-29-19-10-59.png)
+
+1. Asignarle bloques requeridos:
+    - Abrir el archivo y agregarlo en lista de archivos abiertos 
+    - obtener bloques libres (recorro la estrucutra para conocer cuales estan libres y la reescribo)
+    - asignar bloques: en los punteros a bloques del FCB pongo los bloques asignados.
+1. Escribir en el archivo
+    - Escribir bloques
+    - Actualizar atributos: fecha, nombre, permisos, etc.
+1. cerar archivo:
+    - elimino de la lista de archivos abiertos
+
+### Recuperacion
+- Comprobacion de coherencia
+- Backups
+- Journaling (estructura de registro)
+
+### Swaping
+* Es una particion del disco dnd se van a guardar los procesos suspendidos.
+* Tmb se pueden guardar las paginas de los procesos
+
+### FAT: File allocation Table
+
+![](2022-06-29-20-35-33.png)
+
+* Se dedican 1 o N regiones a la tabla FAT (estructura administrativa)
+
+* Cluster: donde van los bloques de datos, son archivos, directorios, lo que sea
+
+* FAT: 
+- Directorios: contiene un listado de archivos y directorios
+
+Entradas del directorio:
+
+ `|TIPO DE ARCHIVO| NOMBRE Y EXTENSION | PRIMER CLUSTER DEL ARCHIVO * | TAMANIO | ... |`
+
+![](2022-06-29-20-39-50.png)
+
+* FAT: Consiste en una tabla que contiene punteros a bloques 
+
+![](2022-06-29-20-42-02.png)
+
+ejemplo: si busco el archivo arc.txt, se va al primer cluster 7 indicado en el directorio, luego
+en la tabla de entrada FAT se busca en la posicion 7 a que bloque se apunta -> apunta al bloque 6 , leemos el bloque 6 y buscamos en la tabla FAT a que bloque apunta -> FIN. no hay mas datos para leer. 
+
+* Basicamente la tabla fat, indica cual es el bloque de dato que le sigue a cada bloque
+
+_la cantidad de entradas de la tabla fat == cantidad de bloques en el disco_
+
+- FAT12= punteros de 12 bits
+- FAT16= punteros de 16 bits
+- FAT32= punteros de 32 bits (_solo se usan 28 bits para el puntero_)
+
+![](2022-06-29-20-48-38.png)
+
+
+### EXT2 | EXT3 | UTS
+
+![](2022-06-29-20-53-25.png)
+
+* El volumen se divide en grupos
+1. Super bloque: administra informacion general de volumen (cantidad total de bloques del volumen, bloques libres, direccion del primer directorio)
+1. Descriptor de grupos: administracion generla de todos los grupos
+1. Bitman de bloques: array de bits [10101] indica los bloques libres
+1. bitmap de inodos: array de bits [11001] indica si las estructuras de inodos estan libres
+1. tabla de Inodos (File control block): array con todos los inodos que hay en el grupo de 
+bloques
+1. bloque de datos: los datos en si.
+
+
+* Directorios:
+`NUMERO DE INODO | NOMBRE ARCHIVO | TIPO ARCHIVO`
+* hay un puntero al inodo, que es el que nos permite luego administrar el archivo, ya que este contiene los punteros a los bloques del mismo.
+
+![](2022-06-29-20-57-52.png)
+
+* los inodos:
+    - Uno por archivo
+    - Tamanio fijo: 128 bytes
+    - Contienen atributos del archivoi
+    - Punteros a los bloques de datos
+    - representa el FCB
+ 
+* Inodos: Permiten crear punteros a demanda (normalmente solo tiene 12, osea nada!
+
+* Tipos de punteros del inodo: 
+    - Directos: apuntan a bloque de datos
+    - Indirectos: Apuntan a un bloque de punteros
+        - Simples
+        - Dobles
+        - Triples
+
+![](2022-06-29-21-04-03.png)
+
+* estos tienen un limite igual, no se pueden expander infinitamente.
+
+* Soft link: 
+![](2022-06-29-21-13-05.png)
+
+1. Se intenta crear un archivo directo del archivo tp_v2.c en el directorio /usr
+1. Se crea el archivo tp.c y junto con el un inodo 33
+1. el inodo en el puntero a bloque de datos contiene la direccion real del archivo tp_v2.c
+1. Se accede con la direccion absoluta _/home/utnso/tp-v2.c_
+1. se abren a los datos apuntado por esa direcion, el inodo 20
+
+* Hard link:
+
+![](2022-06-29-21-16-23.png)
+
+* EL contador de HL: indica la cantidad de direcotrios q estan apuntando a ese archivo
+* EN caso de que se borre el archivo original, sigue funcionando el acceso directo.
+
+### Comparacion entre FAT y UFS
+![](2022-06-29-21-18-05.png)\
+
+
+
+![](2022-06-29-21-05-03.png)
+
