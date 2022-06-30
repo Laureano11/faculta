@@ -843,7 +843,10 @@ Para esto existen algoritmos para solucionarlos entre ellos:
 
 * Se necesita tabla de segmentacion: tabla donde dice donde esta cada segmento del proceso
 
+
 ` Direccion logica: N de segmento | Desplazamiento `
+
+![](2022-06-30-20-07-42.png)
 
 ![](2022-05-24-20-13-06.png)
 
