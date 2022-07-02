@@ -978,6 +978,8 @@ _la estrategia de memoria virtual viene incorporada por hardware ya_
 
 * Trashing: cuando en un intervalo de tiempo se pasa mas tiempo trayendo y sacando paginas que ejecutando el proceso en si.
 
+![](2022-07-02-09-05-43.png)
+
 ![](2022-06-08-14-35-14.png)
 
 ### Algoritmos
