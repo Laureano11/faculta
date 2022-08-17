@@ -85,3 +85,30 @@ Representa la funcionalidad completa del ssitema
 - Elimina redundancias
 
 ![](2022-06-28-10-37-10.png)
+
+## Der
+* Representa mediante un modelo de red los datos almacenados o persistidos en el sistema
+
+* Compuesto por:
+- Entidades: 
+    - es una idea relevante del negocio que estoy modelando
+    - Compuiesto por atributos y relaciones
+    - Posee una clave que permite identificar de forma unica la ocurrencia de una entidad
+
+- Atributos: son caracteristicas/propiedades asociadas a una entidad
+    - valores en una instancia en particular
+    
+
+Ejemplo:     
+![](2022-07-12-08-36-28.png)
+
+- Relaciones:
+    - Indican como se relacionan las entidades
+    - Cardinalidad: numero maximo de instancias con la que puede relacionarse una entidad con otra.
+    - Modalidad: Numero minimo de instancias con las que puede relacionarse una entidad con otra
+
+
+### Normalizacion
+1. Eliminar datos calculador
+1. Los campos no claves dependen completamente de la clave 
+1. 

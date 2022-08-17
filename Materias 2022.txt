@@ -1,7 +1,11 @@
-Analisis de sistemas	AN
-Fisica II		1C
-Sistema Operativos	1C
-Ciberseguridad   	1C
+Analisis de sistemas	AN (Recuperar 1 parcial)
+Fisica II		1C (Recuperar 1 parcial)
+Sistema Operativos	1C (FINAL)
+Ciberseguridad   	1C (PROMOCIONADA)
+
+
+
+
 Analisis Matematico II 	2C
 Gestion de datos	2C (Pedir excepcion correlativas)
 TADP			2C (Pedir excepcion correlativas)
