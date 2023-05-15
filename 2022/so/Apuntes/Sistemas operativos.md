@@ -1,4 +1,3 @@
-# Sistemas operativos
 
 ## Repaso arquitectura
 
@@ -28,7 +27,7 @@
 
 Pasos para ejecutar una instruccion
 
-![](2022-05-19-19-41-42.png)
+![](pngss/2022-05-19-19-41-42.png)
 
 * Los valores de la memoria son llevados a la cpu para ejecutar la instuccion. 
 
@@ -70,7 +69,7 @@ El sistema operativo en si es un programa de software, encargado de adminisitrar
 Hacer de interfaz entre el usuario y el programa. 
 Se administra a si mismo.
 
-![](2022-05-19-19-42-56.png)
+![](pngss/2022-05-19-19-42-56.png)
 
 
 ### Seguridad
@@ -92,7 +91,7 @@ Haciendo uso de la llamada al sistema (syscall), mediante la cual le solicitan s
 estas llamadas al syscall se realizan cuando requieren ejecutar instrucciones privilegiadas.
 * Todas estas syscall son de alto nivel
 
-![](2022-05-19-19-54-00.png)
+![](pngss/2022-05-19-19-54-00.png)
 
 * El app developer solo conoce las syscalls que le ofrece el SO.
 
@@ -129,7 +128,7 @@ Como esta compuesto un proceso?
     - Recursos asignados: Archivos abiertos, etc.
 
 * Imagen del proceso:
-![](2022-05-19-20-19-49.png)    
+![](pngss/2022-05-19-20-19-49.png)    
     - Heap: va variando en tiempo de ejecucion (malloc y free)
     - Datos: estatica, se reserva al inicio y se libera al final (finalizacion del proceso) _ej: una variable global_
     - Stack: 
@@ -137,7 +136,7 @@ Como esta compuesto un proceso?
         - Direcciones de retorno de las funciones: saber cual es la direccion para continuar ejecutando antes de haber entrado a dicha funcion.
 
 * Ejemplo de guardado: 
-![](2022-05-19-20-30-00.png)
+![](pngss/2022-05-19-20-30-00.png)
 
 `Aclarcion muy importante: Porque char * mensaje va en el stack ? esto es porque el puntero a un tipo de dato char es una variable local, pero el espacio donde se encuentra guardado el contenido de mensaje eso si va al HEAP, ya que esto si ocupa espacio de memoria`
 
@@ -146,7 +145,7 @@ Como esta compuesto un proceso?
 Que es el PCB? Es el process control block y es una struct que arma el SO para administrar un proceso, via esta estructura conoce la informacion necesaria para manipularlo.
 
 * Que contiene el PCB? :
-![](2022-05-19-20-35-21.png)
+![](pngss/2022-05-19-20-35-21.png)
 
 
 * Suspender un proceso: sacarlo de la memoria ram
@@ -172,7 +171,7 @@ Que es el PCB? Es el process control block y es una struct que arma el SO para a
 
 _Que no compartan informacion no significa que nunca lo hagan, sino que no es algo necesario, pero podria ocurrir._
 
-![](2022-05-19-20-56-18.png)
+![](pngss/2022-05-19-20-56-18.png)
 
 * Estados: 
     - New: el proceso esta siendo creado (las esctructuras necesarias)
@@ -193,7 +192,7 @@ Porque un proceso cambia constantemente su PID ? Porque este no es el mismo, sin
 
 ### Syscalls bloqueantes y nobloqueantes
 
-![](2022-05-19-21-01-37.png)
+![](pngss/2022-05-19-21-01-37.png)
 
 ```
 * Un proceso puede ejecutar las siguientes funciones para obtener su ID:
@@ -406,7 +405,7 @@ Se arman listas por estas prioridades y se van ejecutando las listas completas p
     1. Liberan
 * En caso que un recurso no este disponible el procesador puede bloquearse.
 
-![](2022-05-03-18-51-02.png)
+![](pngss/2022-05-03-18-51-02.png)
 
 
 * Tipos de recursos:
@@ -414,7 +413,7 @@ Se arman listas por estas prioridades y se van ejecutando las listas completas p
 * Consumibles: ejemplo un mensaje via socket, ya que una vez que se consume este no esta mas. 
 * Reutilizables:  Estos recursos se pueden volver a utilizar 
 
-![](2022-05-03-19-00-38.png)
+![](pngss/2022-05-03-19-00-38.png)
 
 * Ciclos:
     - Si no hay ciclo no hay deadlock
@@ -455,7 +454,7 @@ puede evitarse.
 Garantiza que no ocurrira, a traves de 2 tecnicas denegar el inicio de un proceso, denegar la asignacion de un recurso. Toma decisiones en tiempo de ejecucion
 
 *  Denegar el inicio de un proceso: 
-![](2022-05-03-19-55-42.png)
+![](pngss/2022-05-03-19-55-42.png)
 
 se aseguro que haya recursos para todo de modo que ningun proceso tenga que esperar nunca.
     
@@ -511,7 +510,7 @@ FTP: File transfer protocol
 
 * Solucion 2: 
 
-![](2022-05-17-15-58-17.png)
+![](pngss/2022-05-17-15-58-17.png)
 
 * En este caso se estaria creando un nuevo proceso por cada cliente (por parte del proceso padre _FTP coordinator_) 
 
@@ -521,7 +520,7 @@ FTP: File transfer protocol
 
 ### Cuales son los pro y contras de un proceso por cada cliente?
 
-![](2022-05-17-16-17-14.png)
+![](pngss/2022-05-17-16-17-14.png)
 
 
 * Solucion 3: 
@@ -538,7 +537,7 @@ FTP: File transfer protocol
 
 
 
-![](2022-05-17-16-41-13.png)
+![](pngss/2022-05-17-16-41-13.png)
 
 
 * Porque tenemos un stack duplicado por cada hilo?
@@ -569,7 +568,7 @@ esto se debe a que un hilo puede estar ejecutando una funcion 1 y por otro lado 
 
 ### Ventajas y desventajas de estos hilos:
 
-![](2022-05-17-16-52-37.png)
+![](pngss/2022-05-17-16-52-37.png)
 
 * Un hilo puede crear a otro hilo
 * La creacion de un hilo es mucho mas rapida que un procesador
@@ -619,7 +618,7 @@ Cuando hay muchos hilos para estos los datos y las variables son la mismas para 
     - La biblioteca intercepta todas las syscalls   
 
 
-![](2022-05-19-16-20-12.png)
+![](pngss/2022-05-19-16-20-12.png)
 
 * Como funciona esta biblioteca ULT entonces? Al ser la intermediaria entre el ULT y el SO, en caso de que la syscall que realice el ult derive en un bloqueo del hilo, no lo realizara _debido a que la syscall es no bloqueante_ y esta biblioteca se encargara sola por si misma de _simular_ un bloqueo y darle paso a otro hilo que ejecute
 
@@ -636,7 +635,7 @@ Intentar aprovechar los beneficios de ambas estrategias:
   
 * Imagen de ejemplo de ULTs puro y KLTs puros: 
 
-![](2022-05-19-16-24-09.png)
+![](pngss/2022-05-19-16-24-09.png)
 
 * Finalizar un proceso => Mueren todos los hilos dentros de ese proceso.
 
@@ -644,15 +643,15 @@ Intentar aprovechar los beneficios de ambas estrategias:
 ### Arquitecturas de kernels
 
 * Monolitich kernel:
- ![](2022-05-19-16-49-57.png)
+ ![](pngss/2022-05-19-16-49-57.png)
  * "Modulado" con funciones pero es un bodoque con todo el codigo ahi, una mezcla terrible.
  
 
-![](2022-05-19-16-47-06.png)
+![](pngss/2022-05-19-16-47-06.png)
 * Layered kernel: Donde se modularizan las funciones y cada capa solo puede hablar con la que tiene abajo.
     - Puede ocasionar que una cagada en una capa afecte a todas
 
-![](2022-05-19-16-49-33.png)
+![](pngss/2022-05-19-16-49-33.png)
 * Micro kernel: solo una parte muy pequena en medio kernel
     - EL resto de las logicas que le pertenecerian al modo kernel, lanzo minis procesos que se encarguen de eso
     - Al ser miniprocesos y estar aislados, el fallo de uno no implica que afecte a los demas 
@@ -690,7 +689,7 @@ Soluciones con mutua exclusion garantizada:
 
 * Las operaciones wait , signal : se asumen como atomicas (ocurren o no ocorruen), no se interrumpen.
 
-![](2022-05-20-19-50-51.png)
+![](pngss/2022-05-20-19-50-51.png)
 
 `Basicamente si el valor es negativo tras decrementar, se bloquea el proceso y lo envia a la cola. `
 
@@ -699,9 +698,9 @@ Soluciones con mutua exclusion garantizada:
 * Se inicia en 0 o valores positivos.
 * La cola indica la lista de procesos que estan esperando en ese semaforo
 
-![](2022-05-20-20-08-10.png)
+![](pngss/2022-05-20-20-08-10.png)
 
-![](2022-05-20-20-10-16.png)
+![](pngss/2022-05-20-20-10-16.png)
 
 # Segundo PARCIAL
 ## Memoria Virtual
@@ -716,7 +715,7 @@ Soluciones con mutua exclusion garantizada:
     * Administrador por el SO
     * La ram no conoce su contenido
 
-![](2022-05-24-18-42-21.png)
+![](pngss/2022-05-24-18-42-21.png)
 
 ### Requisitos / Funcionalidades
 
@@ -743,11 +742,11 @@ Es el hardware el encargado de hacer la validacion si la referencia que quiere h
 * Esta base + limit se guarda en los registros del procesador.
 
 
-![](2022-05-24-19-06-41.png)
+![](pngss/2022-05-24-19-06-41.png)
 
 * Estas asignaciones en tiempo de compilacion implicaria el no poder reubicarlo y tambien el no poder elegir donde cargarlo.
 
-![](2022-05-24-19-11-55.png)
+![](pngss/2022-05-24-19-11-55.png)
 
 * En este caso es en tiempo de ejecucion:
     * Se realiza la traduccion de la direccion en el momento que se va a ejecutar dicha instruccion
@@ -777,7 +776,7 @@ COmo pego la biblioteca al proceso para utilizar las funciones de esta?
 
 
 
-![](2022-05-24-19-23-12.png)
+![](pngss/2022-05-24-19-23-12.png)
 
 ### Asignacion de memoria para procesos
 
@@ -789,7 +788,7 @@ COmo pego la biblioteca al proceso para utilizar las funciones de esta?
 1.  El proceso se ubica en alguna particion del mismo o menor tamanio 
 1. Existen dos formas: hacer todas las particiones iguales o hacer un par grandes otras mas chiquitas y asi..
 
-![](2022-05-24-19-30-43.png)
+![](pngss/2022-05-24-19-30-43.png)
 
 
 
@@ -801,7 +800,7 @@ COmo pego la biblioteca al proceso para utilizar las funciones de esta?
 
 * Creo la particion del tamanio que necesita el proceso: no hay fragmentacion interna
 
-![](2022-05-24-19-35-44.png)
+![](pngss/2022-05-24-19-35-44.png)
 
 
 * Sufre de fragmentacion externa: un monton de espacios pero no estan continuos entonces no pueden ser aprovechados.
@@ -826,7 +825,7 @@ Para esto existen algoritmos para solucionarlos entre ellos:
 * asdasd RELLENAR
 
 
-![](2022-05-24-19-45-39.png)
+![](pngss/2022-05-24-19-45-39.png)
 
 ### Segmentacion
 
@@ -846,9 +845,9 @@ Para esto existen algoritmos para solucionarlos entre ellos:
 
 ` Direccion logica: N de segmento | Desplazamiento `
 
-![](2022-06-30-20-07-42.png)
+![](pngss/2022-06-30-20-07-42.png)
 
-![](2022-05-24-20-13-06.png)
+![](pngss/2022-05-24-20-13-06.png)
 
 * Proteccion: cada segmento puede tener permisos de lecutra, escritura y ejecuccion.
 
@@ -860,7 +859,7 @@ Para esto existen algoritmos para solucionarlos entre ellos:
 * Se dividen en paginas los procesos
 * La memoria se divide en frames 
 
-![](2022-05-24-20-20-04.png)
+![](pngss/2022-05-24-20-20-04.png)
 
 * Frames: son las formas en la que se divide la memoria
 * Para cada proceso es necesario una tabla de paginas.
@@ -869,7 +868,7 @@ Para esto existen algoritmos para solucionarlos entre ellos:
 
 `Direcicon fisica= N frame | Desplazamiento`
 
-![](2022-05-24-20-22-46.png)
+![](pngss/2022-05-24-20-22-46.png)
 
 (Pagina * tamano de pagina) + Desplazamiento 
 
@@ -887,7 +886,7 @@ Para esto existen algoritmos para solucionarlos entre ellos:
 
 * Agarra el proceso lo divido en segmentos y cada segmento lo divido en paginas 
 
-![](2022-05-24-20-29-08.png)
+![](pngss/2022-05-24-20-29-08.png)
 
 
 Direccion logica= `SEG| PAG| DESPLAZAMIENTO`
@@ -931,7 +930,7 @@ _la estrategia de memoria virtual viene incorporada por hardware ya_
     * Debloquea el proceso
 1. Se vuelve a ejecutar la instruccion que produzco el page fault.
 
-![](2022-06-08-11-36-20.png)
+![](pngss/2022-06-08-11-36-20.png)
 
 * Cuando el dato se encuentra en ram, son 2 accesos a memoria 1 para la tabla de paginas y otro para la ram
 * Cuando la pagina no esta cargada es un acceso a disco.
@@ -946,7 +945,7 @@ _la estrategia de memoria virtual viene incorporada por hardware ya_
 * Durante un Tiempo se usan unas paginas de forma activa. Este conjunto se denomina localidad.
 
 
-![](2022-06-08-11-57-50.png)
+![](pngss/2022-06-08-11-57-50.png)
 
 * Principio de localidad: durante este tiempo se utiliza un determinado numero de paginas y se reduce el page fault.
 * Localidad espacial: se precargan paginas que se considera que el proceso va a usar asumiendo un riesgo.
@@ -969,7 +968,7 @@ _la estrategia de memoria virtual viene incorporada por hardware ya_
 * Mejorar traducciones de direcciones
 * Puede reducir la cantidad de accesos a memoria.
 
-![](2022-06-08-12-14-38.png)
+![](pngss/2022-06-08-12-14-38.png)
 
 * Muy rapida pero con pocas entradas
 * Se puede hacer una tabla en la cache con los PID para saber a que proceso pertenece cada pagina.
@@ -978,9 +977,9 @@ _la estrategia de memoria virtual viene incorporada por hardware ya_
 
 * Trashing: cuando en un intervalo de tiempo se pasa mas tiempo trayendo y sacando paginas que ejecutando el proceso en si.
 
-![](2022-07-02-09-05-43.png)
+![](pngss/2022-07-02-09-05-43.png)
 
-![](2022-06-08-14-35-14.png)
+![](pngss/2022-06-08-14-35-14.png)
 
 ### Algoritmos
 
@@ -1012,7 +1011,7 @@ _la estrategia de memoria virtual viene incorporada por hardware ya_
 * Algoritmo de clock mejorado
     * Necesita: Bit de uso, bit de modificado, puntero al siguiente marco a analizar
 * Preferencia de como busca la pagina:
-![](2022-06-08-15-00-36.png)
+![](pngss/2022-06-08-15-00-36.png)
 
 1. Si no encuentra la primera opcion en la primera vuelta
 1. va con la 2da opcion y da la 2da vuelta _modificando el bit de uso a 0_.
@@ -1129,7 +1128,7 @@ Permisos
 
 ### Sistema de archivos
 * Disco logico:
-![](2022-06-29-17-07-22.png)
+![](pngss/2022-06-29-17-07-22.png)
 
 `Si escribo  un registro de 8KB => Estoy esciribendo 2 bloques de 4KB => 16 sectores de 512bytes`
 
@@ -1154,7 +1153,7 @@ a una especificacion determinada
 
 
 * Directorios: es un tipo de archivo, indices de nombres.
-![](2022-06-29-18-10-52.png)
+![](pngss/2022-06-29-18-10-52.png)
 
 - Inode: Information NODE es el ID del archivo. 
 
@@ -1164,7 +1163,7 @@ a una especificacion determinada
 * Para poder abrir un archivo se para en un directorio y con el ID, recorre ese directorio hasta encontrar el archivo (o sea el FCB). Esta estructura sirve para controlar el archivo, la levanto a memoria y desde ahi tengo puntero a los datos.  `Es decir: punteros a los blockes asignados a lso archivos`
 
 * Todos los esquemas sufren de fragmentacion interna, porque los bloques son fijos y a todos los archivos se le asignan N cantidad de bloques
-![](2022-06-29-18-58-00.png)
+![](pngss/2022-06-29-18-58-00.png)
 #### Mecanismo contiguo
 
 * Se indica el bloque inicial y la cantidad de bloques
@@ -1205,7 +1204,7 @@ a una especificacion determinada
     - Verificar que exista FCB disponibe
     - Crear entrada de directorio
 
-![](2022-06-29-19-10-59.png)
+![](pngss/2022-06-29-19-10-59.png)
 
 1. Asignarle bloques requeridos:
     - Abrir el archivo y agregarlo en lista de archivos abiertos 
@@ -1228,7 +1227,7 @@ a una especificacion determinada
 
 ### FAT: File allocation Table
 
-![](2022-06-29-20-35-33.png)
+![](pngss/2022-06-29-20-35-33.png)
 
 * Se dedican 1 o N regiones a la tabla FAT (estructura administrativa)
 
@@ -1241,11 +1240,11 @@ Entradas del directorio:
 
  `|TIPO DE ARCHIVO| NOMBRE Y EXTENSION | PRIMER CLUSTER DEL ARCHIVO * | TAMANIO | ... |`
 
-![](2022-06-29-20-39-50.png)
+![](pngss/2022-06-29-20-39-50.png)
 
 * FAT: Consiste en una tabla que contiene punteros a bloques 
 
-![](2022-06-29-20-42-02.png)
+![](pngss/2022-06-29-20-42-02.png)
 
 ejemplo: si busco el archivo arc.txt, se va al primer cluster 7 indicado en el directorio, luego
 en la tabla de entrada FAT se busca en la posicion 7 a que bloque se apunta -> apunta al bloque 6 , leemos el bloque 6 y buscamos en la tabla FAT a que bloque apunta -> FIN. no hay mas datos para leer. 
@@ -1258,12 +1257,12 @@ _la cantidad de entradas de la tabla fat == cantidad de bloques en el disco_
 - FAT16= punteros de 16 bits
 - FAT32= punteros de 32 bits (_solo se usan 28 bits para el puntero_)
 
-![](2022-06-29-20-48-38.png)
+![](pngss/2022-06-29-20-48-38.png)
 
 
 ### EXT2 | EXT3 | UTS
 
-![](2022-06-29-20-53-25.png)
+![](pngss/2022-06-29-20-53-25.png)
 
 * El volumen se divide en grupos
 1. Super bloque: administra informacion general de volumen (cantidad total de bloques del volumen, bloques libres, direccion del primer directorio)
@@ -1279,7 +1278,7 @@ bloques
 `NUMERO DE INODO | NOMBRE ARCHIVO | TIPO ARCHIVO`
 * hay un puntero al inodo, que es el que nos permite luego administrar el archivo, ya que este contiene los punteros a los bloques del mismo.
 
-![](2022-06-29-20-57-52.png)
+![](pngss/2022-06-29-20-57-52.png)
 
 * los inodos:
     - Uno por archivo
@@ -1297,12 +1296,12 @@ bloques
         - Dobles
         - Triples
 
-![](2022-06-29-21-04-03.png)
+![](pngss/2022-06-29-21-04-03.png)
 
 * estos tienen un limite igual, no se pueden expander infinitamente.
 
 * Soft link: 
-![](2022-06-29-21-13-05.png)
+![](pngss/2022-06-29-21-13-05.png)
 
 1. Se intenta crear un archivo directo del archivo tp_v2.c en el directorio /usr
 1. Se crea el archivo tp.c y junto con el un inodo 33
@@ -1312,15 +1311,15 @@ bloques
 
 * Hard link:
 
-![](2022-06-29-21-16-23.png)
+![](pngss/2022-06-29-21-16-23.png)
 
 * EL contador de HL: indica la cantidad de direcotrios q estan apuntando a ese archivo
 * EN caso de que se borre el archivo original, sigue funcionando el acceso directo.
 
 ### Comparacion entre FAT y UFS
-![](2022-06-29-21-18-05.png)\
+![](pngss/2022-06-29-21-18-05.png)
 
 
 
-![](2022-06-29-21-05-03.png)
+![](pngss/2022-06-29-21-05-03.png)
 
