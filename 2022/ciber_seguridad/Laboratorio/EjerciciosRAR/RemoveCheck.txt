@@ -1,1 +1,0 @@
-Modifique el programa para que cualquier nombre de organizacion y serial ingresados sean validos.

@@ -1,0 +1,3 @@
+Revise el código e indique cuál es la contraseña.
+
+Avanzado: Parchar el código para que tome cualquier contraseña como correcta.

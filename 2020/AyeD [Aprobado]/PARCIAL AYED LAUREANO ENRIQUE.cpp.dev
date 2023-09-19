@@ -1,0 +1,30 @@
+#include <iostream>
+#include<conio.h>
+#include<cstring>
+
+struct gasto{
+	int sector;
+	int mes;
+	char detalle[50];
+	int importe;
+};
+struct nodo{
+	gasto info;
+	nodo* sgte;
+}
+
+int main() {
+cout<<"asdasd";
+	int sectores,dias;
+	nodo* lista[sectores][dias];//es una lista con filas de sectores y columnas de dias
+	
+	for(int i=0;i<15;i++){
+		for(int k=0;k<31;k++){
+			lista[i][k]->sgte=NULL;
+		}
+	}
+	
+	FILE* f=fopen("Gastos.dat"."rb");
+	
+	return 0;
+}

@@ -1,6 +1,0 @@
-* Este es un programa codificado en C# (.NET) usando Visual Studio 2010.
-* El ID de usuario debe ser un integer menor a 4 digitos.
-* El código de usuario también debe ser un integer.
-
-1) Estudie la lógica del programa para encontrar la solución.
-2) Programe un keygen.
