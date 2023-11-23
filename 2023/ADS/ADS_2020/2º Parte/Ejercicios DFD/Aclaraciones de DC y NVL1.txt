@@ -1,0 +1,12 @@
+https://app.lucidchart.com/publicSegments/view/2c2b1864-92ae-4337-b840-27d596b48411/image.jpeg
+
+Si tarda en cargar es normal porque son varios DC y NVL1
+La estructura de la foto es asi:
+
+← A la derecha estan todos los DC
+
+→ A la izquierda todos los NVL1
+
+En rojo estan los nombres de los enunciados y algunas aclaraciones en general
+
+OTROSS se refiere a ejercicios que hice por mi cuenta (?

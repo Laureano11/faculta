@@ -1,0 +1,327 @@
+1) El ciclo de vida en Cascada es ideal cuando los requerimientos son bien conocidos por el usuario y en el equipo de proyecto hay mas de 5 personas.
+
+Rta: Falso. No hay ningun tipo de restriccion ni se desarrolla mejor este ciclo de vida porque haya mas de 5 personas.
+
+
+2) Un Pert y un CPM son distintos porque graficamente las tareas y los nodos de un CPM corresponden a un modelo de grafos distinto al que corresponde la estructura de un Pert.
+
+Rta: Falso. La principal diferencia entre los métodos es la manera en uqe sea realizan los estimativos de tiempo.
+
+
+5) Para asegurarnos de que un planeamiento no tendrá desvíos en su cumplimiento debe ser realizado por el analista con más experiencia.
+
+Rta: Falso. La experiencia del analista y su subjetividad pueden ser una desventaja.
+
+
+
+7) Un profesional de sistemas siempre debe resolver problemas bajo el enfoque sistémico.
+
+Rta: Falso. No necesariamente, también puede ser lineal.
+
+
+8) Las tablas de decisión son muy útiles porque permite reflejar todas las decisiones que se toman en una organización.
+
+Rta: Falso. Considerando que la toma de decisiones de una organización se realiza en la alta dirección, nivel de gerencias intermedias y nivel operativo, sólo en éste última se usa la tabla de decisión. Es para decisiones programadas donde los problemas son siempre los mismos.
+
+
+9) Uno de los objetivos de la metodología de sistemas es reducir el costo de mantenimiento.
+
+Rta: Verdadero. Es una de las razones, pero no la única.
+
+
+10) Todos los requisitos son determinados por el usuario.
+
+Rta: Verdadero. Tanto los funcionales como los no funcionales.
+
+
+11) La calidad de un producto software está asociada al uso de tecnología informática de última generación.
+
+Rta: Falso. El método o técnica que se utilice en la construcción del software proporciona el criterio de calidad, además de las herramientas para usar dicho método. También la aplicación de estrategias de prueba y mecanismos de medición.
+
+
+12) No existen sistemas de información impermeables.
+
+Rta: Verdadero. El sistema de información es un sistema abierto, o sea, es permeable. Tiene interacción constante con el medio.
+
+
+13) Todo cambio que se realice durante la etapa de codificación implica una modificación de los modelos conceptuales. 
+
+Rta: Verdadero, para tener actualizado el modelo.
+
+
+14) Las etapas de un ciclo de vida de un sistema pueden alterarse totalmente cuando se trate del desarrollo de un sistema orientado al apoyo de decisiones.
+
+Rta: Falso, las etapas no varían.
+
+
+16) El estudio de factibilidad en el desarrollo de un sistema es una etapa en la que se puede analizar en forma clara y precisa el entorno de la inversión a realizar por la empresa.
+
+Rta: Falso. Se evalúan y proponen distintas alternativas de solución a los requerimientos y se sugiere el mejor curso de acción, utilizando diversos criterios, como el económico, político, legal, etc.
+
+
+17) La portabilidad de un software se caracteriza porque permite adaptar el modelo lógico de un sistema a cualquier plataforma de hardware y entorno de sistema operativo.
+
+Rta: Verdadero. Por definición de portabilidad.
+
+
+18) Las tablas de decisión permiten analizar los casos que no tienen solución en un DFD. Esto es así porque la TD es una técnica que permite un mayor grado de detalle que el DFD, en el modelo lógico de desarrollo.
+
+Rta: Falso. Ambas herramientas sirven para el modelado de procesos, por eso tienen el mismo grado de detalle.
+
+
+
+21) Un sistema de información que interactúe con al menos 5 usuarios debe definirse como un sistema software.
+
+Rta: Falso. La necesidad de tecnología informática no está ligada con la cantidad de personas que usen el sistema. Si un sistema funciona perfectamente de forma manual, no habrá necesidad de incluir software.
+
+
+
+23) El cursograma es complementario a la tabla de decisión ya que los dos reflejan la misma información.
+
+Rta: Falso. Ambas son herramientas utilizadas para documentar información en la etapa de relevamiento, pero el cursograma muestra cómo circula la documentación y la tabla de decisión muestra las distintas decisiones que pueden tomarse respecto a un problema.
+
+
+24) Los requerimientos funcionales se determinan de forma óptima si se utiliza la metodología orientada a objetos porque se pueden definir distintos diagramas.
+
+Rta: Verdadero. El modelado del análisis orientado a objetos permite una mejor captura y validación de requisitos.
+
+
+25) El usuario responsable de suministrarle la información para realizar el sistema, dice que no tiene tiempo para realizar las entrevistas durante el Relevamiento. Considera Ud. que mediante la observación puede obtener toda la información necesaria para realizar el sistema encomendado.
+
+Rta: Verdadero. Ambas son técnicas de obtención de información. Consiste en observar al que toma decisiones y su lugar de trabajo. Se busca obtener datos estadísticos de cuál es la información que maneja, cómo la obtiene y comparte.
+
+
+26) El criterio de productividad en el desarrollo de software debe definirse durante la etapa de implementación. Esto permite finalizar dicha etapa lo antes posible, y asi dejar funcionando el sistema en menos tiempo.
+
+Rta: Falsa. En la etapa de relevamiento, es un requisito no funcional.
+
+
+27) Las Tablas de Decisión permiten encerar en forma ordenada y estructurada todo tipo de decisión, dentro de la organización.
+
+Rta: Falso. Sólo es útil para decisiones programadas, que se toman a nivel operativo. Además, no dice nada acerca del orden de toma de decisión. 
+
+
+28) Al momento de realizar el desarrollo del código (etapa de programación), los programadores le solicitan al analista realizar cambios en las especificaciones del sistema, basados en el objetivo de acelerar el desarrollo del mismo. Esto permite disminuir los tiempos de desarrollo y por lo tanto, adelantar la respuesta al usuario.
+
+Rta: Falso. Nada indica que será así, ya que quizás las etapas previas a la programación no se adecúen a las nuevas especificaciones. Puede implicar algún tipo de relevamiento y análisis nuevo.
+
+
+29) La gestion de calidad de un proyecto de software comienza cuando se inicia el diseño del mismo.
+
+Rta: Falso. Se realiza en toda etapa del proceso de desarrollo.
+
+
+30) Cuánto más especializado es un sistema, menor será su adaptabilidad a las diferentes circunstancias.
+
+Rta: Falso. La adaptabilidad de un sistema es la propiedad de aprender y modificar un proceso, estado o característica de acuerdo a las modificaciones que sufre el contexto. Se relaciona con el concepto de homeostasis, que es la capacidad de supervivencia del sistema a través de su adaptación al contexto.
+
+
+31) El criterio de modularidad en el desarrollo de un software se relaciona con el enfoque sistémico de división del sistema en subsistemas facilitando su comprensión y evaluación.
+
+Rta: Falso. Se relaciona con el enfoque orientado a objetos. Es la capacidad del sistema de ser visto como la unión de parte que interactúan entre sí en busca de un objetivo en común.
+
+
+32) El árbol de decisión es preferible a la tabla de decisión para analizar casos muy complejos.
+
+Rta: Verdadero. Se utiliza para ramificaciones complejas en los procesos estructurados de decisión. El mismo no es binomial
+
+
+33) Cuando se analizan los costos de mantenimiento de un sistema, algunos de los factores que se consíderan son el costo de adquisición del hardware y cuál será el retorno de inversión.
+
+Rta: Falso. Eso se realiza en la etapa de estudio de factibilidad.
+
+
+34) Si se realiza una adecuada planificación, no tiene sentido realizar los controles correspondientes. Pues un buen plan no necesita insumir más tiempo pare ser controlado.
+
+Rta: Falso. Siempre debe controlarse el plan para saber que todo marche adecuadamente y para evaluar el progreso.
+
+
+35) La gestión de calidad de un proyecto de software comienza cuando se inicia el desarrollo del mismo.
+
+Rta: Verdadero. Desde el método o técnica para el desarrollo del software se encuentra apoyado en fuertes principios de calidad, los cuales son subjetivos.
+
+
+36) En un diagrama de Gantt, si una tarea comienza inmediatamente después que otra haya finalizado no se puede asegurar que ésta última dependa de la primera.
+
+Rta: Falso. El diagrama de Gantt no permite ver la interdependencia entre tareas.
+
+
+37) La solución tecnológica de un proyecto de software se define durante la etapa de análisis funcional.
+
+Rta: Falso. Se define en la etapa de estudio de factibilidad, cuando se selecciona la alternativa de solución.
+
+
+
+39) La cantidad de reglas de una tabla de decisión aumenta en forma exponencia si sólo se utiliza registro binario en su construcción.
+
+Rta: Verdadero. La cantidad de alternativas = n da una cantidad de reglas 2^n.
+
+
+40) Para definir un ciclo de vida a utilizar en una metodología de análisis y diseño es mejor si se elige el que tenga más etapas porque permite determinar mayores hitos de control. 
+
+Rta: Falso. Dependerá de otros factores, como el conocimiento del problema, la experiencia de los desarrolladores, la estabilidad de los recursos, entre otros. Recordar que los hitos también implican costos que son sumados al proyecto, por lo que deberá realmente analizarse su necesidad.
+
+
+41) El dato es un concepto objetivo que refleja una realidad y la información es un concepto subjetivo porque depende del valor que se le asigne en un momento determinado. 
+
+Rta: Falso. La subjetividad proviene del receptor, o sea, de sus exclusivos conocimientos e interpretación.
+
+
+
+43) La capacidad de adaptacion del sistema al contexto y sobrevivir se llama Sinergia.
+
+Rta: Falso. Esa es la definición de homeostasis. La sinergia define que la capacidad de actuación de un sistema es superior a la de sus componentes sumados individualmente.
+
+
+44) Un cuestionario es una técnica de recolección de informacion que se utiliza cuando se debe entrevistar a más de 3 personas.
+
+Rta: Falso. Si bien es una técnica aconsejable cuando el volumen de personas es grande, nada especifica la cantidad.
+
+
+45) Los ciclos de vida prototipados son una buena opcion para cuando el proyecto tiene varios riesgos identificados. 
+
+Rta: Falso. El ciclo de vida en espiral es el que contempla los riesgos.
+
+
+46) En la etapa de pruebas de metodologia de sistemas se busca encontrar fallas en el software.
+
+Rta: Verdadero. En esta etapa se hace un control muy fuerte de la calidad, se detectan fallas mediante pruebas de unidad, de integracion, de sistemas, de aceptacion entre otros.
+
+
+47) Las tablas de decision son una herramienta de analisis que permite modelar las decisiones programadas y no programadas. 
+
+Rta: Falso. Se utiliza sólo en decisiones programadas.
+
+
+48) Si en un proyecto se seleccionó el ciclo de vida cascada entonces una vez que se finalizo la etapa de análisis no se pueden incorporar nuevos requerimientos.
+
+Rta: Verdadero. Si queda finalizada la etapa no hay vuelta.
+
+
+
+50) En el Gantt para determinar el camino critico se tiene que tener en cuenta solo las tareas con intervalo de flotamiento igual a 0.
+
+Rta: Falso. La técnica de Gantt se utiliza para el seguimiento de tareas, muestra solamente cuándo comienza y cuándo termina. El CPM es el que nos muestra las dependencias entre diferentes actividades y con ello se establece la ruta crítica.
+
+
+51) Los riesgos son problemas que deben analizarse a lo largo de todo el proyecto. 
+
+Rta: Verdadero. Se realiza en la gestión del proyecto, paralelo a las actividades del proceso de desarrollo del proyecto.
+
+
+54) Los ciclos de vida definen la forma en que se realiza el analisis del proyecto.
+
+Rta: Falso. El ciclo de vida es la estrategia de sucesion de etapas por las que pasa el software desde que es concebido un nuevo proyecto hasta que se deja de utilizar.
+
+
+56) El modelo o ciclo de vida a aplicar en un proyecto depende de si se conoce el dominio de la aplicacion, de la experiencia de los desarrolladores y de la inestabilidad de los requisitos.
+
+Rta: Falso. También deben considerarse los recursos disponibles.
+
+
+57) En la conclusion del informe de reconocimiento se expresan los requerimientos o requisitos tanto funcionales como no funcionales.
+
+Rta: Falso. Los requisitos se determinan en el relevamiento.
+
+
+58) Todos los sistemas de informacion son sistemas software porque se pueden automatizar.
+
+Rta: Falso. El sistema de información puede estar automatizado manualmente sin necesidad de tecnología informática. 
+
+ 
+
+60) En un diagrama de Gantt es imposible visualizar la dependencia exacta de las tareas.
+
+Rta: Verdadero. Sólo muestra quién es el responsable, cuándo empieza y cuándo termina cada tarea.
+
+
+61) El requerimiento de rapidez de un procesamiento es un requisito funcional ya que si el procesamiento es lento el sistema no se utilizara.
+
+Rta: Falso. Es un requisito no funcional ya que no se refiere a la funcion especifica del sistema, sino a una caracteristica, propiedad del funcionamiento/ejecucion, en este caso el tiempo de respuesta.
+
+
+62) En una tabla de decision cuando dos o mas reglas tienen el mismo conjunto de condiciones y las acciones son diferentes estamos frente a una redundancia.
+
+Rta: Falso. Es una contradiccion.
+
+
+66) Una desventaja de las entrevistas es que tienen un alto costo de analisis de la informacion.
+
+Rta: Verdadero. En el caso particular del uso de cinta, se debe transcribir, y a su vez las notas deben ser analizadas.
+
+
+
+68) Si la ejecucion de un proyecto demoró más de 10 dias respecto al planeamiento original demuestra la ineficacia del lider de proyecto.
+
+Rta: Falso. Puede estar demorado por falta de recursos necesario para el desarrollo de alguna de las actividades.
+
+
+69) Los requisitos no funcionales no son relevantes en el analisis de un sistema por lo que puede obviarse su relevamiento.
+
+Rta: Falso. Ambos son importantes, uno especifica la función de un sistema o componente y el otro las características de funcionamiento o ejecución que debe tener.
+
+
+70) El ciclo de vida en Cascada es ideal cuando los requerimientos son bien conocidos por el usuario y en el equipo de proyecto hay más de 5 personas. 
+
+Rta: Falso. En el ciclo de vida en Cascada se necesitan tener los requerimientos al comienzo, pero no hay ningun tipo de restriccion ni se desarrolla mejor este ciclo de vida porque haya mas de 5 personas.
+
+
+71) Los requerimientos que especifican caracteristicas de funcionamiento o ejecucion que debe tener un sistema y estan relacionadas estrictamente a condiciones operativas son Requisitos no funcionales.
+
+Rta: Verdadero. Es la definición de requisito no funcional.
+
+
+72) Para definir un ciclo de vida a utilizar en una metodología de análisis y diseño es mejor si se elige el que tenga más etapas porque permite determinar mayores hitos de control.
+
+Rta: Falso. La elección de un ciclo de vida depende de otros factores, no simplemente del amplio control. Además, los hitos tienen un costo adicional que puede ser inncesario. Habría que analizar si la incertidumbre y el riesgo son lo suficientemente altos como para justificar dicho costo. Por ejemplo, el sistemas pequeños quizás no es necesario, o no en tanta cantidad como en uno complejo.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+COMPLETAR LAS DEFINICIONES:
+
+1- en una tabla de decisiones, cuando dos o más reglas tienen el mismo conjunto de condiciones y las acciones son diferentes, estamos frente a ....
+
+Una contradiccion
+
+	
+2- los requerimientos que especifican caracteristicas de funcionamiento o ejecucion que debe tener un sistema y estan relacionadas estrictamente a condiciones operativas (ej. Back Up) se denominan ....
+
+No Funcionales
+
+
+3- ....... se encargan de las funciones de seguridad del sistema. 
+
+Requisitos no funcionales
+
+
+4- ....... define la adaptabilidad del sistema y su interacción con el medio.
+
+Contexto o ambiente
+
+
+5- La diferencia entre la fecha mas tardía y mas temprana se denomina .....
+
+Intervalo de flotamiento
+
+
+6- Los ..... especifican las características de ejecución que debe tener un sistema. Las mismas se encuentran relacionadas específicamente con el proceso de desarrollo e incluyen aspectos como mantenibilidad, flexibilidad y portabilidad.
+
+Requisitos no funcionales
+
+
+7- Cuál es la función del modelo lógico durante la etapa de análisis de un sistema.
+
+Rta: me interesa pensar en la solución lógica del sistema, sin tener en cuenta cómo se construirá. Me concentro en determinar los eventos que ocurren y los datos que requiere y produce. De un modelo lógico pueden surgir varios modelos físicos.
+
+--------------------------------------------------------------------------------------------------------------------------
+
+3) El ciclo de vida que se utiliza cuando los desarrolladores tienen experiencia en los problemas a resolver y pueden 
+congelarse los requisitos de sistema durante el proceso de desarrollo se llama: 
+
+a) Cascada	x
+b) Prototipos 
+c) Espiral 
+d) Ninguno de los anteriores. 
+
+
