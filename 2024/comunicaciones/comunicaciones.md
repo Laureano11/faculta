@@ -93,3 +93,15 @@ Distorsion por ancho de banda:
 ### 
 
 * Capacidad de un canal: es la capacidad maxima que alcanzaria si no hubiera ruido
+
+
+* Distancia al horizonte: 
+
+* Distancia de alcance visual: es la maxima distancia a la que se pueden ubicar 2 antenas, para que electricamente se vean
+
+![alt text](image-6.png)
+![alt text](image-7.png)
+
+* Propagacion por onda espacial o Ionosfera: 
+
+# Para que voy a perder tiempo anotando, explica como el ORTO
