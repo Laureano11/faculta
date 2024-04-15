@@ -49,5 +49,30 @@ Dinamicamente se representa con link structs (struct con 2 variable)
 
 
 
+# Arboles
+Donde cada elemento se puede relacionar con mas de uno.
 
+- Nivel: Altura del arbol, arranca de 0
+- Grado: maxima cantidad de hijos
+- Profundidad: es la cantidad de niveles que tiene
 
+Como saber donde estan mis hijos ? Segun una posicion I
+ 2 * I + 1 = 1er hijo , porque al multiplicar por 2 termina tu nivel (en el caso de grado 2)
+ 2 * I + 2 = 2do hijo 
+
+ Caso inverso encontrar padre: 
+Si la posicion es PAR, si o si soy hijo derecho
+Si la posicion es IMPAR, si o si soy hijo izquierdo
+
+(I - 1)/2
+(I - 2)/2
+
+* Caracteristicas del arbol:
+    - Balanceado: mismia cantidad de elementos en cada subarbol o una diferencia indivisible
+    - Completo: es en cual todos los nodos del arbol cumplen el grado o son hojas
+    - Perfectamente balanceado: Cuando esta completo y estan todas las hojas al mismo nivel.
+
+### Busqueda en arboles 
+![alt text](image-2.png)
+
+* La busqueda en arboles es logaritmica, por lo tanto a gran cantidad de elementos es proporcionalmente menos. 
