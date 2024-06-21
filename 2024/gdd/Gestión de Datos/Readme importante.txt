@@ -1,2 +1,0 @@
-En la ppt de árboles, está mal la escritura de cómo se leería inorden, post orden y pre orden (no subió el prof las ppt corregidas). 
-Tampoco subió las ppts de grafos (clase 1) así que para eso quedan los apuntes y lo que rescaten de su propia cursada.
