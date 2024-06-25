@@ -1,0 +1,36 @@
+2. V ó F
+a. Falso. Solo los arbolines binarios perfectos son balanceados
+b. Verdadero. En ambos es O(n.logn) (No es estable)
+
+3.
+a.
+Un grafo se define como G(V, A) donde V es el conjunto de vértices (o nodos) y A el conjunto de aristas
+que las une. Un grafo sirve para modelizar problemas matemáticos, el más conocodi: el problema del viajero que aún no tiene solución por ser de complejidad NP.
+Su clasificación puede ser por restricción:
+- Restrictos: Solo pueden modelizar relaciones que cumplan las propiedades de de transitividad, simetría y reflexividad
+- Irrestrictos: Pueden modelizar cualquier tipo de relación sin importar las restrcciones arriba mencionadas
+Por su direccionalidad.
+- Dirigidos: Las aristas que unen los vértices tienen un sentido de recorrido, eso significa que no son bidireccionales.
+- No dirigidos: Las aristas pueden ser recoridas en un sentido o el otro y ambas son válidas.
+Hay problemas de la realidad donde es necesario grafo dirigido y otros que no. Ninguno es 'mejor' que el otro 
+
+La representación computacional puede ser estática o dinámica.
+Las representaciones estáticas pueden ser:
+Matriz de adyacencia: Conecta vertice con vertice, como resultado resulta en una matriz de nxn siendo n el numero de vertices. Es muy ineficiente en espacio porque su tamaño es fijo y es funcion de la cantidad de vertices n (nxn)
+Matriz de Incidencia: Las filas son vertices y las columnas aristas. Si el grafo es no dirigido contiene como máximo dos 1
+por columna. Es de tamaño fijo nxm siendo n los vertices y m las aristas. Ineficiente como la anterior para grafos dispersos
+
+Las dinámicos suelen representarse en:
+Listas de adyacencia: Cada vertice es un nodo con una lista de adyacencia asociada a él. De esta forma el tamaño crece dinámicamente conforme aumentan los caminos entre vertices. Es más eficiente en terminos de complejidad espacial porque no guarda datos sobre vertices no conectados (a diff de la las repr. estaticas)
+Listas de Graal: Es una mejora de las listas de adyacencia que utiliza punteros para optimizar el uso de la memoria. También consiste en un nodo con un puntero a una lista de nodos a los cuales puede ir este vertice. Si es un grafo no dirigido, el vertice destino tambien va a tener al propio en su lista de adyacencia (o un puntero a el)
+Representación de Platz: Utiliza structs para representar un nodo con su informacion y un puntero al siguiente nodo, tien otro struct para representar la arista y de donde viene y hacia donde va (y un puntero a la siguiente arista)
+
+b. La tabla de hechos en una arquitectura de Data Warehouse contiene información primaria del dominio del negocio.
+ Nro de cliente, edad, ingresos, variando según las necesidades de los sujetos que van a consumir la base.
+ Contiene las primary keys a partir de las cuales cada dimension table se joinea para explotar un aspecto del negocio.
+Cada tabla de dimensión explota un aspecto de esos datos ofreciendo consultas históricas, que permiten consumir los datos de forma exploratoria sin tener que pensar querys sql, ver si compilan, etc. Esto es porque el concepto de Data warehouse está orientado al sujeto, a ayudarlo a que tome decisiones y pone énfasis en la historia de las operaciones por lo cual se dice que es variante en el tiempo, de modo que es posible reconstruir hechos a partir de la información contenida. Otra característica importante es la de integración, al ser una recolección de distintas fuentes de información (BD SQL, NOSQL, archivos..) debe consolidar la información de forma consistente para poder explorarla. 
+En su origen tenía una implementación no SQL, pero las grandes companías de bases de datos vieron el nicho y agregaron soporte para este tipo de bases de datos multidimensionales.
+Otra diferencia importante con las bases de datos operacionales es que la información aquí no está normalizada, porque su objetivo no es la performance, sino ofrecer información al cliente que le sirve para el desarrollo de su negocio
+
+
+
