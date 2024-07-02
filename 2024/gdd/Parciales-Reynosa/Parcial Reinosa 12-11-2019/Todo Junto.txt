@@ -1,0 +1,158 @@
+/*
+Estadistica de ventas especiales.
+La factura es especial si tiene mas de 1 producto con composicion vendido.
+Year, cant_fact, total_facturado_especial, porc_especiales, max_factura, monto_total_vendido
+porc_especiales, monto_total_vendido
+Order: cant_fact DESC, monto_total_vendido DESC
+*/
+SELECT YEAR(fact_fecha) AS yr,
+	   COUNT(fact_tipo+fact_sucursal+fact_numero) as CANT_FACT_ESPECIALES,
+	   SUM(fact_total) AS TOTAL_FACTURADO_ESP,
+	   (
+			SELECT SUM(G.fact_total) 
+			FROM Factura G
+			WHERE YEAR(G.fact_fecha)=YEAR(A.fact_fecha)
+	   ) AS TOTAL_FACTURADO_YEAR,
+	   (
+			SUM(fact_total) * 100
+			/
+			(
+				SELECT SUM(G.fact_total) 
+				FROM Factura G
+				WHERE YEAR(G.fact_fecha)=YEAR(A.fact_fecha)
+			)
+	   ) AS PORC_ESPECIALES,
+	   MAX(fact_total) AS MAX_MONTO_FACTURA
+FROM Factura A
+WHERE fact_tipo+fact_sucursal+fact_numero IN (
+		SELECT fact_tipo+fact_sucursal+fact_numero
+		FROM Factura G
+		JOIN Item_Factura ON G.fact_tipo+G.fact_sucursal+G.fact_numero=item_tipo+item_sucursal+item_numero
+		JOIN Producto ON item_producto=prod_codigo
+		JOIN Composicion ON comp_producto=item_producto
+		GROUP BY fact_tipo+fact_sucursal+fact_numero
+		HAVING COUNT(DISTINCT(comp_producto)) > 1
+)
+GROUP BY YEAR(fact_fecha)
+ORDER BY 2 DESC, 4 DESC
+
+
+/*
+2.
+Recalcular precios de prods con composicion
+Nuevo precio: suma de precio compontentes * 0,8 
+*/
+IF OBJECT_ID('precio_compuesto') IS NOT NULL
+	DROP FUNCTION precio_compuesto
+GO 
+
+CREATE FUNCTION precio_compuesto(@producto CHAR(8))
+RETURNS DECIMAL(12, 2)
+AS
+BEGIN
+	/*
+		If a product has no componentes, its price is its own price.
+		If it has N componentes, its price is the sum of its components
+		* Para el producto 00006402 me da 86.02, cuando la suma de sus componentes es 62.96+5.86+2.68+4.64. 
+		* No estoy seguro si esta mal o me cuesta seguir la recursividad...
+		* Probe debuggeando pero el debugger no me muestra los valores de las variables... 
+	*/
+	DECLARE @precio DECIMAL(12, 2)=0.0
+	IF NOT EXISTS (SELECT * FROM Composicion WHERE comp_producto=@producto)
+		BEGIN
+			SET @precio = (SELECT prod_precio FROM Producto WHERE prod_codigo=@producto)
+			RETURN @precio
+		END
+
+	-- Si estamos acá al menos hay un componente que compone a mi producto
+	DECLARE @componente CHAR(8)
+	DECLARE @componente_cant DECIMAL(12, 2)
+
+	DECLARE C2 CURSOR FOR 
+	SELECT comp_componente, comp_cantidad FROM Composicion WHERE comp_producto=@producto
+	OPEN C2
+
+	FETCH NEXT FROM C2 INTO @componente, @componente_cant 
+	WHILE @@FETCH_STATUS = 0
+		BEGIN
+			SET @precio = @precio + dbo.precio_compuesto(@componente) * @componente_cant
+			FETCH NEXT FROM C2 INTO @componente, @componente_cant
+		END
+
+	CLOSE C2
+	DEALLOCATE C2
+	RETURN @precio
+END
+GO
+
+IF OBJECT_ID('NUEVO_PRECIO') IS NOT NULL
+	DROP PROCEDURE NUEVO_PRECIO
+GO
+
+
+CREATE PROCEDURE NUEVO_PRECIO
+AS
+BEGIN
+	DECLARE @prod_codigo CHAR(8)
+
+	-- Obtengo productos con composicion
+	DECLARE C1 CURSOR FOR 
+	SELECT prod_codigo
+	FROM Producto
+	JOIN Composicion ON comp_producto=prod_codigo
+
+	OPEN C1
+	FETCH NEXT FROM C1 INTO @prod_codigo
+	WHILE @@FETCH_STATUS = 0
+		BEGIN
+			UPDATE Producto
+			SET prod_precio = dbo.precio_compuesto(@prod_codigo) * 0.8
+			WHERE prod_codigo=@prod_codigo
+			FETCH NEXT FROM C1 INTO @prod_codigo
+		END
+
+	CLOSE C1
+	DEALLOCATE C1
+
+END
+
+
+
+3. 
+V ó F
+a. Falso. Solo los arbolines binarios perfectos son balanceados
+b. Verdadero. En ambos es O(n.logn) (No es estable)
+
+4.
+a.
+Un grafo se define como G(V, A) donde V es el conjunto de vértices (o nodos) y A el conjunto de aristas
+que las une. Un grafo sirve para modelizar problemas matemáticos, el más conocodi: el problema del viajero que aún no tiene solución por ser de complejidad NP.
+Su clasificación puede ser por restricción:
+- Restrictos: Solo pueden modelizar relaciones que cumplan las propiedades de de transitividad, simetría y reflexividad
+- Irrestrictos: Pueden modelizar cualquier tipo de relación sin importar las restrcciones arriba mencionadas
+Por su direccionalidad.
+- Dirigidos: Las aristas que unen los vértices tienen un sentido de recorrido, eso significa que no son bidireccionales.
+- No dirigidos: Las aristas pueden ser recoridas en un sentido o el otro y ambas son válidas.
+Hay problemas de la realidad donde es necesario grafo dirigido y otros que no. Ninguno es 'mejor' que el otro 
+
+La representación computacional puede ser estática o dinámica.
+Las representaciones estáticas pueden ser:
+Matriz de adyacencia: Conecta vertice con vertice, como resultado resulta en una matriz de nxn siendo n el numero de vertices. Es muy ineficiente en espacio porque su tamaño es fijo y es funcion de la cantidad de vertices n (nxn)
+Matriz de Incidencia: Las filas son vertices y las columnas aristas. Si el grafo es no dirigido contiene como máximo dos 1
+por columna. Es de tamaño fijo nxm siendo n los vertices y m las aristas. Ineficiente como la anterior para grafos dispersos
+
+Las dinámicos suelen representarse en:
+Listas de adyacencia: Cada vertice es un nodo con una lista de adyacencia asociada a él. De esta forma el tamaño crece dinámicamente conforme aumentan los caminos entre vertices. Es más eficiente en terminos de complejidad espacial porque no guarda datos sobre vertices no conectados (a diff de la las repr. estaticas)
+Listas de Graal: Es una mejora de las listas de adyacencia que utiliza punteros para optimizar el uso de la memoria. También consiste en un nodo con un puntero a una lista de nodos a los cuales puede ir este vertice. Si es un grafo no dirigido, el vertice destino tambien va a tener al propio en su lista de adyacencia (o un puntero a el)
+Representación de Platz: Utiliza structs para representar un nodo con su informacion y un puntero al siguiente nodo, tien otro struct para representar la arista y de donde viene y hacia donde va (y un puntero a la siguiente arista)
+
+b. La tabla de hechos en una arquitectura de Data Warehouse contiene información primaria del dominio del negocio.
+ Nro de cliente, edad, ingresos, variando según las necesidades de los sujetos que van a consumir la base.
+ Contiene las primary keys a partir de las cuales cada dimension table se joinea para explotar un aspecto del negocio.
+Cada tabla de dimensión explota un aspecto de esos datos ofreciendo consultas históricas, que permiten consumir los datos de forma exploratoria sin tener que pensar querys sql, ver si compilan, etc. 
+Esto es porque el concepto de Data warehouse está orientado al sujeto, a ayudarlo a que tome decisiones y pone énfasis en la historia de las operaciones por lo cual se dice que es variante en el tiempo, de modo que es posible reconstruir hechos a partir de la información contenida. Otra característica importante es la de integración, al ser una recolección de distintas fuentes de información (BD SQL, NOSQL, archivos..) debe consolidar la información de forma consistente para poder explorarla. 
+En su origen tenía una implementación no SQL, pero las grandes companías de bases de datos vieron el nicho y agregaron soporte para este tipo de bases de datos multidimensionales.
+Otra diferencia importante con las bases de datos operacionales es que la información aquí no está normalizada, porque su objetivo no es la performance, sino ofrecer información al cliente que le sirve para el desarrollo de su negocio
+
+
+

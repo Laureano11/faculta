@@ -1,0 +1,3 @@
+Corto Plazo: Liquidez General, Liquidez Absoluta, Rotación del Activo Corriente, Rotación de los Bienes de Cambio.
+Largo Plazo: Endeudamiento, Solvencia, ROA, ROE, Inmovilización de los Bienes de Uso.
+Ambos: Margen sobre Ventas, Cobertura de Intereses, Ciclo de Conversión de Efectivo.
