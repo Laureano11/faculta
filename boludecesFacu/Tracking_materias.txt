@@ -35,31 +35,37 @@ Total: 4
 
 2023
 Operativos [APROBADO]
-ADS 
-AM_II
-Legislacion 
-Ingles libre II 
+ADS [APROBADO]
+Legislacion [APROBADO]
+
+TOTAL: 3
 
 
-cd
+
 2024:
-Mate superior
+AM II [APROBADO]
+Economia [APROBADO]
+GDD [APROBADO]
+Comunicaciones [APROBADO]
 DDS
-Economia
-Electiva
-GDD
-Comunicaciones
 
 
-[Trabajo??] 
+Mate superior
+Redes de informacion 
+Inv Operativa 
+ING software
+
 
 2025:
-Redes de Información
+
 Administracion recursos
-Investigacion Operativa
+
 Teoria control
-Ing. Software
 Simulacion
+Sistema de gestion 
+
+Adminsitracion gerencial
+Inteligencia artificial
 
 
 2026:
