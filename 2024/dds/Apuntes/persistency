@@ -1,0 +1,124 @@
+# Persistency 
+
+- Los enumerados jamas se mapean como una tabla, sino como una columna
+
+``` 
+@Enumerated (EnumType.STRING) // se guarda literalmente la palabra
+(EnumType.ORDINAL) // se guarda el numero porque son enums
+@Column     
+private DayOfWeek dia;
+
+``` 
+
+* Como guardar palabras en espaniol que tengo en ingles
+Usamos un convertor
+
+![alt text](image-2.png)
+
+* Usando el convertor quedaria
+```
+@Convertert(converter = DiaDeLaSemanaAtributteConverter.class)
+private dayOfWeek dia;
+
+```
+
+* La columna quedaria de tipo varchar 255
+
+### Mapeos Bidireccional
+* Ambas partes deben conocerse? 
+
+
+
+### Atributos
+1. @Entity va a ser una entidad
+1. @Table va a ser una tabla
+1. @Id para identificar
+1. @ManyToOne tipo de relaciones con otras tablas
+1. @OneToMany tipo de relaciones con otras tablas
+1. @GeneratedValue para que se autogenere el valor, por ejemplo en claves primarias
+1. @Column (name
+            nullable,
+            columndefinition (tipodedato))
+1. @ElementCollection implica que va a ser una coleccion de elementos
+1. @CollectionTable (name, joincolumns) dice que tablas va a ser la coleccion
+
+1. @Transient siginifca que no queremos mapear dicho atributo
+
+
+### Mapeo many to many
+
+![alt text](image-3.png)
+
+* EN este caso el joincolumn indica de la tabla intermedia a que apunta dentro de nuestra clase, en este caso estamos en la clase trabajo
+- El inverseJoinColumn indica a que apunta en la otra tabla que conectamos, en este caso serian las tareas.
+
+
+### Embedeable para que sirve?
+- Cuando por ejemplo en una clase persona
+`Persona{
+    ubicacion Ubicacion
+}`
+
+tenemos un tipo de dato que contiene otro adentros y no quiero crear una tabla para ese tipo de dato, sino mas bien traer lo datos que contiene ubicacion (calle,numero, ciudad, etc)
+
+@Embedded: Se lo pone al atributo que va a "embeber"
+
+@Embeddable: Se lo pone a la clase que va a ser "embebida"
+
+En este caso consideramos que neceistamos los datos de ubicaion, pero no me interesa una tabla propia para esa entidad.
+
+
+### Mapeo OneToOne
+
+@OneToOne
+
+@JoinColumn(name=, referencedColumName= ,unique=true)
+
+
+
+### Herencias como hacerlo?
+
+#### _Single table_
+![alt text](image-5.png) 
+
+* DiscriminatorValue: Es una columna que indica a que clase pertenece la instancia/fila en cuestion.
+
+#### _Joined_
+
+* En esta estrategia, el resultado de mapear se generara una tabla por la superclase y N tablas por cada clase hija
+
+* Justificacion: CUando utilizar este metodo? Cuando tengo muchos atributos en la clase padre y muchos atributos distintos en las clases hijas, es decir comparten un poco pero despues cada una tiene mucho propio por su cuenta
+
+
+#### Table per class
+
+* Suponiendo que existe una unica superclase y N clases hijas concretas, como resultado generara en la base de datos N tablas, una por cada hija
+
+* Es decir no genera una tabla para la clase padre
+* Muy similar a mapped superclass
+
+_Cual es la diferencia entre mapped y table?_
+
+
+Suponiendo que la clase reputacion es una entidad, entonces podes decirle a la DB que recupere todas las reputaciones, mientras que en mapped superclass no lo puede hacer
+
+#### MappedSuperClass
+
+* @MappedSuperClass implica que los atributos que tenga esta clase se van a heredar a las clases que lo implementen.
+- no termina siendo una entidad la clase  que implemente este @MappedSupperClass, sino que solamente hara que sus clases hijas hereden sus atributos
+
+## Como interactuar con la base de datos
+
+### Busquedas
+* Entity manager
+- Usar transacciones (cuando vamos a impactar en la DB)
+- Se encargan los repositorys de hacer esta intereaccion con la DB
+
+#### Algunos ejemplos:
+
+![alt text](image-6.png)
+ 
+ * Siempre se busca nombre de clases, de atributos  y no nombre de tablas y columnas. Porque estamos trabajando a nivel de objetos y no de DB
+
+### Updates
+

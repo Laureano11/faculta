@@ -1,0 +1,25 @@
+Redes informacion: Tipo A
+2025	1C	K4151	MEDRANO	Lunes (Noche) 19:00hs a 21:30hs y Viernes (Noche) 19:00hs a 23:00hs
+
+
+Ingenieria Software: Tipo B 
+2025	1C	K4053	MEDRANO	Martes (Noche) 18:15hs a 23:00hs	
+2025	1C	K4052	MEDRANO	Lunes (Noche) 18:15hs a 23:00hs
+
+
+Administracion de recursos: Tipo B
+2025	A	K4152	MEDRANO	Miercoles (Noche) 18:15hs a 23:00hs
+2025	A	K4054	MEDRANO	Martes (Noche) 18:15hs a 23:00hs
+
+
+Teoria control: Tipo C
+2025	1C	K4054	MEDRANO	Miercoles (Noche) 18:15hs a 23:00hs	
+
+
+Investigacion operativa: Tipo C
+2025	1C	K4052	MEDRANO	Martes (Noche) 19:00hs a 23:00hs y Jueves (Noche) 19:00hs a 23:00hs
+
+
+Diseno de sistemas: Cambio curso
+2025	A	K3101	MEDRANO	Martes (Mañana) 8:30hs a 13:15hs
+
